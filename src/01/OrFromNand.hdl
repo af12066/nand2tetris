@@ -1,0 +1,10 @@
+CHIP OrFromNand {
+  IN a, b;
+  OUT out;
+  PARTS:
+    /* NOT */
+    Nand(a=a, b=a, out=nota);
+    Nand(a=b, b=b, out=notb);
+    /* NOT */
+    Nand(a=nota, b=notb, out=out);
+}
