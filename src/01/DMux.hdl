@@ -1,0 +1,16 @@
+/* DMux = OR(a, AND(b, sel)) */
+CHIP DMux {
+	IN i, sel;
+	OUT a, b;
+	PARTS:
+		/* a = AND(i, NOT(sel)) */
+		/* NOT */
+		Nand(a=sel, b=sel, out=nsel);
+		/* AND */
+		Nand(a=i, b=nsel, out=w1);
+		Nand(a=w1, b=w1, out=a);
+
+		/* b= AND(i, sel) */
+		Nand(a=i, b=sel, out=w2);
+		Nand(a=w2, b=w2, out=b);
+}

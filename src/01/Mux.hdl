@@ -1,0 +1,20 @@
+/* Mux = OR(AND(a, NOT(sel)), AND(b, sel)) */
+CHIP Mux {
+  IN a, b, sel;
+  OUT out;
+  PARTS:
+    /* NOT */
+    Nand(a=sel, b=sel, out=w);
+    /* AND */
+    Nand(a=a, b=w, out=w1);
+    Nand(a=w1, b=w1, out=asel);
+
+    /* AND */
+    Nand(a=b, b=sel, out=w3);
+    Nand(a=w3, b=w3, out=bsel);
+
+    /* OR */
+    Nand(a=asel, b=asel, out=notasel);
+    Nand(a=bsel, b=bsel, out=notbsel);
+    Nand(a=notasel, b=notbsel, out=out);
+}
