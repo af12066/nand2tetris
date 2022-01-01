@@ -1,5 +1,5 @@
-load AndFromNand.hdl,
-  output-file AndFromNand.out,
+load Or.hdl,
+  output-file Or.out,
   output-list a b out;
 set a 0, set b 0,
   eval, output;

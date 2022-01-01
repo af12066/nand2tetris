@@ -1,4 +1,4 @@
-CHIP OrFromNand {
+CHIP Or {
   IN a, b;
   OUT out;
   PARTS:
