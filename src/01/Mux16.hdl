@@ -1,0 +1,224 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/Mux16.hdl
+
+/**
+ * 16-bit multiplexor: 
+ * for i = 0..15 out[i] = a[i] if sel == 0 
+ *                        b[i] if sel == 1
+ */
+
+CHIP Mux16 {
+  IN a[16], b[16], sel;
+  OUT out[16];
+
+  PARTS:
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel0);
+    /* AND */
+    Nand(a=a[0], b=sel0, out=aw0);
+    Nand(a=aw0, b=aw0, out=aww0);
+    /* AND */
+    Nand(a=b[0], b=sel, out=bw0);
+    Nand(a=bw0, b=bw0, out=bww0);
+    /* OR */
+    Nand(a=aww0, b=aww0, out=notasel0);
+    Nand(a=bww0, b=bww0, out=notbsel0);
+    Nand(a=notasel0, b=notbsel0, out=out[0]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel1);
+    /* AND */
+    Nand(a=a[1], b=sel1, out=aw1);
+    Nand(a=aw1, b=aw1, out=aww1);
+    /* AND */
+    Nand(a=b[1], b=sel, out=bw1);
+    Nand(a=bw1, b=bw1, out=bww1);
+    /* OR */
+    Nand(a=aww1, b=aww1, out=notasel1);
+    Nand(a=bww1, b=bww1, out=notbsel1);
+    Nand(a=notasel1, b=notbsel1, out=out[1]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel2);
+    /* AND */
+    Nand(a=a[2], b=sel2, out=aw2);
+    Nand(a=aw2, b=aw2, out=aww2);
+    /* AND */
+    Nand(a=b[2], b=sel, out=bw2);
+    Nand(a=bw2, b=bw2, out=bww2);
+    /* OR */
+    Nand(a=aww2, b=aww2, out=notasel2);
+    Nand(a=bww2, b=bww2, out=notbsel2);
+    Nand(a=notasel2, b=notbsel2, out=out[2]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel3);
+    /* AND */
+    Nand(a=a[3], b=sel3, out=aw3);
+    Nand(a=aw3, b=aw3, out=aww3);
+    /* AND */
+    Nand(a=b[3], b=sel, out=bw3);
+    Nand(a=bw3, b=bw3, out=bww3);
+    /* OR */
+    Nand(a=aww3, b=aww3, out=notasel3);
+    Nand(a=bww3, b=bww3, out=notbsel3);
+    Nand(a=notasel3, b=notbsel3, out=out[3]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel4);
+    /* AND */
+    Nand(a=a[4], b=sel4, out=aw4);
+    Nand(a=aw4, b=aw4, out=aww4);
+    /* AND */
+    Nand(a=b[4], b=sel, out=bw4);
+    Nand(a=bw4, b=bw4, out=bww4);
+    /* OR */
+    Nand(a=aww4, b=aww4, out=notasel4);
+    Nand(a=bww4, b=bww4, out=notbsel4);
+    Nand(a=notasel4, b=notbsel4, out=out[4]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel5);
+    /* AND */
+    Nand(a=a[5], b=sel5, out=aw5);
+    Nand(a=aw5, b=aw5, out=aww5);
+    /* AND */
+    Nand(a=b[5], b=sel, out=bw5);
+    Nand(a=bw5, b=bw5, out=bww5);
+    /* OR */
+    Nand(a=aww5, b=aww5, out=notasel5);
+    Nand(a=bww5, b=bww5, out=notbsel5);
+    Nand(a=notasel5, b=notbsel5, out=out[5]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel6);
+    /* AND */
+    Nand(a=a[6], b=sel6, out=aw6);
+    Nand(a=aw6, b=aw6, out=aww6);
+    /* AND */
+    Nand(a=b[6], b=sel, out=bw6);
+    Nand(a=bw6, b=bw6, out=bww6);
+    /* OR */
+    Nand(a=aww6, b=aww6, out=notasel6);
+    Nand(a=bww6, b=bww6, out=notbsel6);
+    Nand(a=notasel6, b=notbsel6, out=out[6]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel7);
+    /* AND */
+    Nand(a=a[7], b=sel7, out=aw7);
+    Nand(a=aw7, b=aw7, out=aww7);
+    /* AND */
+    Nand(a=b[7], b=sel, out=bw7);
+    Nand(a=bw7, b=bw7, out=bww7);
+    /* OR */
+    Nand(a=aww7, b=aww7, out=notasel7);
+    Nand(a=bww7, b=bww7, out=notbsel7);
+    Nand(a=notasel7, b=notbsel7, out=out[7]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel8);
+    /* AND */
+    Nand(a=a[8], b=sel8, out=aw8);
+    Nand(a=aw8, b=aw8, out=aww8);
+    /* AND */
+    Nand(a=b[8], b=sel, out=bw8);
+    Nand(a=bw8, b=bw8, out=bww8);
+    /* OR */
+    Nand(a=aww8, b=aww8, out=notasel8);
+    Nand(a=bww8, b=bww8, out=notbsel8);
+    Nand(a=notasel8, b=notbsel8, out=out[8]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel9);
+    /* AND */
+    Nand(a=a[9], b=sel9, out=aw9);
+    Nand(a=aw9, b=aw9, out=aww9);
+    /* AND */
+    Nand(a=b[9], b=sel, out=bw9);
+    Nand(a=bw9, b=bw9, out=bww9);
+    /* OR */
+    Nand(a=aww9, b=aww9, out=notasel9);
+    Nand(a=bww9, b=bww9, out=notbsel9);
+    Nand(a=notasel9, b=notbsel9, out=out[9]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel10);
+    /* AND */
+    Nand(a=a[10], b=sel10, out=aw10);
+    Nand(a=aw10, b=aw10, out=aww10);
+    /* AND */
+    Nand(a=b[10], b=sel, out=bw10);
+    Nand(a=bw10, b=bw10, out=bww10);
+    /* OR */
+    Nand(a=aww10, b=aww10, out=notasel10);
+    Nand(a=bww10, b=bww10, out=notbsel10);
+    Nand(a=notasel10, b=notbsel10, out=out[10]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel11);
+    /* AND */
+    Nand(a=a[11], b=sel11, out=aw11);
+    Nand(a=aw11, b=aw11, out=aww11);
+    /* AND */
+    Nand(a=b[11], b=sel, out=bw11);
+    Nand(a=bw11, b=bw11, out=bww11);
+    /* OR */
+    Nand(a=aww11, b=aww11, out=notasel11);
+    Nand(a=bww11, b=bww11, out=notbsel11);
+    Nand(a=notasel11, b=notbsel11, out=out[11]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel12);
+    /* AND */
+    Nand(a=a[12], b=sel12, out=aw12);
+    Nand(a=aw12, b=aw12, out=aww12);
+    /* AND */
+    Nand(a=b[12], b=sel, out=bw12);
+    Nand(a=bw12, b=bw12, out=bww12);
+    /* OR */
+    Nand(a=aww12, b=aww12, out=notasel12);
+    Nand(a=bww12, b=bww12, out=notbsel12);
+    Nand(a=notasel12, b=notbsel12, out=out[12]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel13);
+    /* AND */
+    Nand(a=a[13], b=sel13, out=aw13);
+    Nand(a=aw13, b=aw13, out=aww13);
+    /* AND */
+    Nand(a=b[13], b=sel, out=bw13);
+    Nand(a=bw13, b=bw13, out=bww13);
+    /* OR */
+    Nand(a=aww13, b=aww13, out=notasel13);
+    Nand(a=bww13, b=bww13, out=notbsel13);
+    Nand(a=notasel13, b=notbsel13, out=out[13]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel14);
+    /* AND */
+    Nand(a=a[14], b=sel14, out=aw14);
+    Nand(a=aw14, b=aw14, out=aww14);
+    /* AND */
+    Nand(a=b[14], b=sel, out=bw14);
+    Nand(a=bw14, b=bw14, out=bww14);
+    /* OR */
+    Nand(a=aww14, b=aww14, out=notasel14);
+    Nand(a=bww14, b=bww14, out=notbsel14);
+    Nand(a=notasel14, b=notbsel14, out=out[14]);
+
+    /* NOT */
+    Nand(a=sel, b=sel, out=sel15);
+    /* AND */
+    Nand(a=a[15], b=sel15, out=aw15);
+    Nand(a=aw15, b=aw15, out=aww15);
+    /* AND */
+    Nand(a=b[15], b=sel, out=bw15);
+    Nand(a=bw15, b=bw15, out=bww15);
+    /* OR */
+    Nand(a=aww15, b=aww15, out=notasel15);
+    Nand(a=bww15, b=bww15, out=notbsel15);
+    Nand(a=notasel15, b=notbsel15, out=out[15]);
+}
